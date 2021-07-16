@@ -47,12 +47,14 @@ export default function FriendIndex() {
                     inactiveTintColor: 'gray'
                 }}>
                 <Tab.Screen name="전체 채팅" component={AllChatIndex}
-                    options={{ tabBarIcon: ({ color, size }) => ( <Text/> ), tabBarLabel:"첫번째", unmountOnBlur: Platform.OS === 'ios' ? false : true, }}
+                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
                 ></Tab.Screen>
                 <Tab.Screen name="나의 채팅" component={MyChatIndex}
-                    options={{ tabBarIcon: ({ color, size }) => ( <Text /> ), tabBarLabel:"두번째", unmountOnBlur: Platform.OS === 'ios' ? false : true, }}
+                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
                 ></Tab.Screen>
-                <Tab.Screen name="전체 회원" component={MemberIndex}></Tab.Screen>
+                <Tab.Screen name="전체 회원" component={MemberIndex}
+                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
+                ></Tab.Screen>
             </Tab.Navigator>
             <RenderActionButton></RenderActionButton>
         </Container>
