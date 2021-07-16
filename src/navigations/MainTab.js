@@ -91,7 +91,7 @@ const MainTab = ({ navigation, route }) => {
                             TabBarIcons({
                                 focused,
                                 name: 'person'
-                            }),
+                            }),   
                     }} />
             </Tab.Navigator>
 

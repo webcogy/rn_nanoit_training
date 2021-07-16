@@ -7,6 +7,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text } from "react-native";
 import styled from 'styled-components/native';
 const Stack = createStackNavigator();
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+
+function getHeaderTitle(route) {
+  // If the focused route is not found, we need to assume it's the initial screen
+  // This can happen during if there hasn't been any navigation inside the screen
+  // In our case, it's "Feed" as that's the first screen inside the navigator
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+
+  switch (routeName) {
+    case 'Feed':
+      return 'News feed';
+    case 'Profile':
+      return 'My profile';
+    case 'Account':
+      return 'My account';
+  }
+}
+
 
 
 const StackNavigation = () => {
@@ -32,14 +50,3 @@ const StackNavigation = () => {
 };
 
 export default StackNavigation;
-
-
-
-/*버튼 스타일 */
-const styles = StyleSheet.create({
-  actionButtonIcon: {
-    fontSize: 20,
-    height: 22,
-    color: 'white',
-  },
-});
