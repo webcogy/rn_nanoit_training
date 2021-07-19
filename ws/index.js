@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-native-use-websocket';
 
 export const SocketTest = () => {
-    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('ws://172.30.1.28:8081/api/v1/ws', {
+    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('add your url', {
         shouldReconnect: (closeEvent) => true,
         reconnectAttempts: 10,
         reconnectInterval: 5000,
