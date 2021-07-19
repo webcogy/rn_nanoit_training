@@ -12,24 +12,16 @@ export default function LogIn({ navigation }) {
     const { sendMessage, lastMessage } = SocketTest();
 
     const clickLogin = () => {
-        if (email == 0 && pwd == 0) {
-            sendMessage(
-                JSON.stringify(AuthLoginAnonymous())
-            )
-        } else {
-            sendMessage(
-                JSON.stringify(AuthLoginId(email, pwd))
-            )
-        }
+        sendMessage(
+            JSON.stringify(AuthLoginId(email, pwd))
+        )
         if (!lastMessage || !lastMessage.data) {
-            console.log("...")
+            return
         } else {
             const userData = JSON.parse(lastMessage.data)
             console.log(`${userData.result.status_code}, ${userData.result.cause}`)
             if (userData.result.status_code == 200) {
-                navigation.navigate("FriendIndex", {
-                    userData: userData
-                });
+                navigation.navigate("FriendIndex");
             }
         }
     }
@@ -75,7 +67,7 @@ export default function LogIn({ navigation }) {
                     <Right>
                         <Button style={styles.tinyButton, styles.container}
                             onPress={() => {
-                                navigation.navigate("Signup")
+                                navigation.reset({routes:[{name:"Aaaa"}]})
                             }}>
                             <Text>회원가입</Text>
                         </Button>

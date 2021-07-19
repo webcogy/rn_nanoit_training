@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import useWebSocket, { ReadyState } from 'react-native-use-websocket';
 
 export const SocketTest = () => {
-    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('add your url', {
+    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('ws://172.30.1.23:8081/api/v1/ws', {
         shouldReconnect: (closeEvent) => true,
         reconnectAttempts: 10,
         reconnectInterval: 5000,
@@ -24,7 +24,7 @@ export const SocketTest = () => {
             // console.log(lastMessage.data)
         }
     }, [lastMessage])
-
+    
     useEffect(() => {
         if (connectionStatus === 'Open') {
             console.log('opened');

@@ -6,8 +6,7 @@ import MemberIndex from './Member/MemberIndex';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Container, Header, Right, Button, Text } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { Container } from 'native-base';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import RenderActionButton from './FloatingButton';
@@ -17,14 +16,6 @@ const Tab = createBottomTabNavigator();
 export default function FriendIndex() {
     return (
         <Container>
-            <Header>
-                <Text></Text>
-                <Right>
-                    <TouchableOpacity transparent>
-                        <Icon name='menu' size={30}></Icon>
-                    </TouchableOpacity>
-                </Right>
-            </Header>
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
@@ -46,15 +37,9 @@ export default function FriendIndex() {
                     activeTintColor: 'black',
                     inactiveTintColor: 'gray'
                 }}>
-                <Tab.Screen name="전체 채팅" component={AllChatIndex}
-                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
-                ></Tab.Screen>
-                <Tab.Screen name="나의 채팅" component={MyChatIndex}
-                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
-                ></Tab.Screen>
-                <Tab.Screen name="전체 회원" component={MemberIndex}
-                    options={{ unmountOnBlur: Platform.OS === 'ios' ? false : true }}
-                ></Tab.Screen>
+                <Tab.Screen name="전체 채팅" component={AllChatIndex}></Tab.Screen>
+                <Tab.Screen name="나의 채팅" component={MyChatIndex}></Tab.Screen>
+                <Tab.Screen name="전체 회원" component={MemberIndex}></Tab.Screen>
             </Tab.Navigator>
             <RenderActionButton></RenderActionButton>
         </Container>
