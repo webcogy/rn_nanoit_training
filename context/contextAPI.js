@@ -9,6 +9,8 @@ const IS_COUNTING = 'IS_COUNTING';
 
 const IS_LOGIN = 'IS_LOGIN';
 
+const REQUEST_HOW_CREATE = 'create';
+
 /********************************************************
  * actions : 상태를 업데이트할 용도의 함수를 제작
  *           ※ 실제 state 업데이트 동작은 reducer에서 처리하고, 
@@ -17,6 +19,47 @@ const IS_LOGIN = 'IS_LOGIN';
  *              2. 파라미터 받아오기
  *           이 두가지만 '설정'한다.
  *******************************************************/
+
+let writer;
+const UpdateWriter = (sendMessage) => {
+    // 변수 writer에 sendMessage 태워서 다른 곳에서도 sendMessage 사용
+    writer = sendMessage
+}
+
+const WriterChatMessage = (json) => {
+    if (writer !== undefined) {
+        writer(JSON.stringify(json))
+    }
+}
+
+const receiveData = (json, props) => {
+    let root
+    try {
+        root = JSON.parse(json)
+
+        // 모든 메시지를 받는 부분
+        // 여기서부터 받게되는 RECV 정보에 따라 구분 처리해야함
+        console.log(root)
+    } catch (e) {
+        console.log(json)
+        console.log(e)
+        return
+    }
+}
+
+const msgActions = (props) => {
+    return {
+        WebsocketUpdateWriter: (sendMessage) => {
+            UpdateWriter(sendMessage);
+        },
+        WebsocketReceiveData: (json) => {
+            receiveData(json, props);
+        },
+        WebsocketSendChatMessage: (json) => {
+            WriterChatMessage(json);
+        }
+    }
+}
 
 // type만 설정한 이유는, reducer에서 이 타입일 경우 실행할 동작을 설정해놓기 때문임.
 const increase = (props) => (
@@ -84,6 +127,7 @@ const viewActions = (props) => {
 export const useActions = (state, dispatch) => {
     return {
         counterActions: counterActions({ state, dispatch }),
+        msgActions: msgActions({ state, dispatch }),
         // viewActions: viewActions({state, dispatch}),
     }
 };
@@ -99,6 +143,12 @@ const counterStates = {
     isCounter: false,
     isLogin: false,
 }
+
+const msgStates = {
+    FRIENDS_ALL: [], // 회원목록
+    TOPICS_ALL: [], // 모든 채팅방
+    TOPICS_MY: [], // 나의 채팅방
+}
 /* 
 const listStates = {
     text:'',
@@ -108,6 +158,7 @@ const listStates = {
 
 export const initialState = {
     counterStates,
+    msgStates,
     // listStates
 };
 
@@ -146,6 +197,21 @@ const counterReducer = (state, action) => {
     }
 }
 
+const msgReducer = (state, action) => {
+    switch (action.type) {
+        /*
+        * 상태 업데이트
+        */
+        case INCREASE:
+            return {
+                ...state,
+                counter: state.counter + 1
+            };
+        default:
+            return state; // 기본 값 설정. 파라미터가 undefined인 경우를 대비
+    }
+}
+
 /* 
 const listReducer = (state, action) => {
     switch (action.type) {
@@ -161,6 +227,7 @@ const listReducer = (state, action) => {
 export const reducer = (state = initialState, action) => {
     return {
         counterStates: counterReducer(state.counterStates, action),
+        msgStates: msgReducer(state.msgStates, action),
         // listStates: listReducer(state.listStates, action),
     }
 };

@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import { Button, Container, Content, Footer, Form, Header, Input, Item, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { SocketTest } from '../../ws';
 import { AuthSignup } from './auth';
 
 export default function Signup({ navigation }) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
-
-    const { sendMessage, lastMessage } = SocketTest();
 
     const clickSignup = () => {
         sendMessage(

@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-export default function LogInIndex() {
+export default function LogInIndex({ sendMessage, lastMessage }) {
     return (
         <Stack.Navigator initialRouteName="LogIn"
             screenOptions={{ headerShown: false }}>

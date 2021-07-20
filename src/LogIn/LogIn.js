@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 import { SocketTest } from '../../ws';
 import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from './auth';
 
+import { StoreContext } from '../../context/storeContext';
+
 export default function LogIn({ navigation }) {
+    const { state, actions } = useContext(StoreContext);
+
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
@@ -21,7 +25,9 @@ export default function LogIn({ navigation }) {
             const userData = JSON.parse(lastMessage.data)
             console.log(`${userData.result.status_code}, ${userData.result.cause}`)
             if (userData.result.status_code == 200) {
-                navigation.reset({ routes: [{ name: "FriendIndex" }] })
+                // navigation.reset({ routes: [{ name: "FriendIndex" }] })
+                // navigation.navigate("FriendIndex")
+                
             }
         }
     }
@@ -40,9 +46,6 @@ export default function LogIn({ navigation }) {
 
     return (
         <Container>
-            <Header style={styles.container}>
-                <Text style={styles.headTextStyle}>로그인</Text>
-            </Header>
             <Content>
                 <Form>
                     <Item>
