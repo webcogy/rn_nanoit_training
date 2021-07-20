@@ -8,7 +8,6 @@ import { StyleSheet, Text } from "react-native";
 import styled from 'styled-components/native';
 const Stack = createStackNavigator();
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { Aaaa, Bbbb, Cccc } from '../imsi';
 
 
 function getHeaderTitle(route) {
