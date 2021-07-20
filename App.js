@@ -20,12 +20,21 @@ export default function App() {
     const { handleWebsocketClose } = SocketTest()
     const value = React.useMemo(() => ({ handleWebsocketClose }), [handleWebsocketClose])
 
+    const forFade = ({ current }) => ({
+        cardStyle: {
+            opacity: current.progress,
+        },
+    });
+
     return (
         <WebsocketContext.Provider value={value}>
             <StoreProvider>
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="LogInIndex"
-                        screenOptions={{ headerShown: false }}>
+                        screenOptions={{
+                            headerShown: false,
+                            cardStyleInterpolator: forFade
+                        }}>
                         <Stack.Screen name="LogInIndex" component={LogInIndex}></Stack.Screen>
                         <Stack.Screen name="AllChat" component={AllChat}></Stack.Screen>
                         <Stack.Screen name="MyChatIndex" component={MyChatIndex}></Stack.Screen>
