@@ -8546,10 +8546,10 @@
   dependencies:
     "prop-types" "^15.5.10"
 
-"react-native-dialog@^8.1.0":
-  "integrity" "sha512-vSo4OiLk4ZfSGWedNFGkC72ftVEb/Om98NvSfYAN3dIBQha8XYQ7eSx3Hlah4f8KKFZmW2oqgVRV+7CLY9GbSQ=="
-  "resolved" "https://registry.npmjs.org/react-native-dialog/-/react-native-dialog-8.1.0.tgz"
-  "version" "8.1.0"
+"react-native-dialog@^8.1.1":
+  "integrity" "sha512-1nLEaKD1dAbjrkbndWFlUJm9TSb5U4A3auDoaa8PZ24MhkcfsMtZ8KqWpeYsJqDx4qBwaej3EEpjBoLgeD6v7w=="
+  "resolved" "https://registry.npmjs.org/react-native-dialog/-/react-native-dialog-8.1.1.tgz"
+  "version" "8.1.1"
 
 "react-native-gesture-handler@*", "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~1.10.2":
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="

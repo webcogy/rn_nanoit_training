@@ -45,7 +45,6 @@ const StackNavigation = () => {
       /> 
       <Stack.Screen name="ChannelCreation" component={ChannelCreation} />
       <Stack.Screen name="ChannelList" component={ChannelList} />
-      <Stack.Screen name="Aaaa" component={Aaaa} />
     </Stack.Navigator>
 
   )
