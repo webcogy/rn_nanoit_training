@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
-import CustomTab from '../../components/CustomTab';
-import ContentWrapper from '../../components/ContentWrapper';
 
 export default function Member({ navigation }) {
     return (
-        <>
-            <ContentWrapper>
-                <Container style={styles.container}>
-                    <Text>전체 회원</Text>
-                </Container>
-            </ContentWrapper>
-            <CustomTab navigation={navigation} />
-        </>
+        <Container style={styles.container}>
+            <Text>전체 회원</Text>
+        </Container>
     );
 }
 

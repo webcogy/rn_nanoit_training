@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
-import CustomTab from '../../components/CustomTab';
-import ContentWrapper from '../../components/ContentWrapper';
 
 export default function AllChat({ navigation }) {
     return (
-        <>
-            <ContentWrapper>
-                <Container style={styles.container}>
-                    <Text>전체 채팅</Text>
-                </Container>
-            </ContentWrapper>
-            <CustomTab navigation={navigation} />
-        </>
+        <Container style={styles.container}>
+            <Text>전체 채팅</Text>
+        </Container>
     );
 }
 

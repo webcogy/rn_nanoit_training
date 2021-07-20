@@ -1,8 +1,6 @@
 import React, { useReducer } from 'react';
 import LogInIndex from './src/LogIn/LogInIndex';
-import AllChat from './src/AllChat/AllChat';
-import MyChatIndex from './src/MyChat/MyChatIndex';
-import Member from './src/Member/Member';
+import FriendIndex from './src/FriendIndex';
 
 import { SocketTest } from './ws';
 import { StoreProvider } from './context/storeContext';
@@ -20,25 +18,16 @@ export default function App() {
     const { handleWebsocketClose } = SocketTest()
     const value = React.useMemo(() => ({ handleWebsocketClose }), [handleWebsocketClose])
 
-    const forFade = ({ current }) => ({
-        cardStyle: {
-            opacity: current.progress,
-        },
-    });
-
     return (
         <WebsocketContext.Provider value={value}>
             <StoreProvider>
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="LogInIndex"
                         screenOptions={{
-                            headerShown: false,
-                            cardStyleInterpolator: forFade
+                            headerShown: false
                         }}>
                         <Stack.Screen name="LogInIndex" component={LogInIndex}></Stack.Screen>
-                        <Stack.Screen name="AllChat" component={AllChat}></Stack.Screen>
-                        <Stack.Screen name="MyChatIndex" component={MyChatIndex}></Stack.Screen>
-                        <Stack.Screen name="Member" component={Member}></Stack.Screen>
+                        <Stack.Screen name="FriendIndex" component={FriendIndex}></Stack.Screen>
                     </Stack.Navigator>
                 </NavigationContainer>
             </StoreProvider>
