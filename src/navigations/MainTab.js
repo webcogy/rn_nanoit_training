@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components/native';
 // import { YellowBox } from 'react-native';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import DialogScreen from '../screens/Dialog';
 
 /* 
 YellowBox.ignoreWarnings([
@@ -16,7 +17,7 @@ YellowBox.ignoreWarnings([
 ]);
  */
 
-goAlert = () =>{
+/*goAlert = () =>{
     Alert.alert(                    // 말그대로 Alert를 띄운다
     "채팅방 이름을 입력해",                    // 첫번째 text: 타이틀 제목
     "ㄹㅇ",                         // 두번째 text: 그 밑에 작은 제목
@@ -31,7 +32,9 @@ goAlert = () =>{
     ],
     { cancelable: false }
 );
-}
+}*/
+
+
 
 
 const Tab = createBottomTabNavigator();
@@ -96,7 +99,7 @@ const MainTab = ({ navigation, route }) => {
             </Tab.Navigator>
 
             <ActionButton buttonColor="rgba(63,81,181,1)" offsetY={100}>
-                <ActionButton.Item buttonColor='#9E72C3' title="New chat" onPress={goAlert}>
+                <ActionButton.Item buttonColor='#9E72C3' title="New chat" onPress={() => this.DialogScreen}>
                     <Icon name="chatbubbles" style={styles.actionButtonIcon} />
                 </ActionButton.Item>
 

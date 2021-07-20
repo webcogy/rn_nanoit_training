@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { StyleSheet } from "react-native";
 import { render } from "react-dom";
 import { navigation } from './navigations/MainStack';
+import { NativeBaseProvider } from 'native-base';
 
 
 
@@ -32,16 +33,21 @@ export default function App() {
     const value = React.useMemo(() => ({ handleWebsocketClose }), [handleWebsocketClose])
 
     return (
+
         <>
-            <StatusBar style="auto" />
-            <WebsocketContext.Provider value={value}>
-                <StoreProvider>
-                    <Container>
-                        <Navigation />
-                    </Container>
-                </StoreProvider>
-            </WebsocketContext.Provider>
+            <NativeBaseProvider>
+                <StatusBar style="auto" />
+
+                <WebsocketContext.Provider value={value}>
+                    <StoreProvider>
+                        <Container>
+                            <Navigation />
+                        </Container>
+                    </StoreProvider>
+                </WebsocketContext.Provider>
+            </NativeBaseProvider>
         </>
+
     );
 }
 
