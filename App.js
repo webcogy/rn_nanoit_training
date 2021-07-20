@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import LogInIndex from './src/LogIn/LogInIndex';
 import AllChat from './src/AllChat/AllChat';
-import MyChat from './src/MyChat/MyChatIndex';
+import MyChatIndex from './src/MyChat/MyChatIndex';
 import Member from './src/Member/Member';
 
 import { SocketTest } from './ws';
@@ -28,7 +28,7 @@ export default function App() {
                         screenOptions={{ headerShown: false }}>
                         <Stack.Screen name="LogInIndex" component={LogInIndex}></Stack.Screen>
                         <Stack.Screen name="AllChat" component={AllChat}></Stack.Screen>
-                        <Stack.Screen name="MyChat" component={MyChat}></Stack.Screen>
+                        <Stack.Screen name="MyChatIndex" component={MyChatIndex}></Stack.Screen>
                         <Stack.Screen name="Member" component={Member}></Stack.Screen>
                     </Stack.Navigator>
                 </NavigationContainer>

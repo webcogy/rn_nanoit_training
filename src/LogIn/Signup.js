@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Content, Footer, Form, Header, Input, Item, Text } from 'native-base';
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { SocketTest } from '../../ws';
 import { AuthSignup } from './auth';

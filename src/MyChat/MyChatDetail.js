@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, FlatList, StyleSheet, View } from "react-native";
 
 import SystemMessage from "./SystemMessage";
 import MessageBubble from "./MessageBubble";
-import ChatDetailInput from "./ChatDetailInput";
+import MyChatDetailInput from "./MyChatDetailInput";
 
 import axios from "axios";
 
@@ -30,7 +30,7 @@ function sendChat(message) {
     });
 }
 
-class ChatDetail extends Component {
+class MyChatDetail extends Component {
     constructor(props) {
         super(props);
 
@@ -70,7 +70,7 @@ class ChatDetail extends Component {
                         renderItem={this.renderItem}
                     />
                 </View>
-                <ChatDetailInput onSubmit={this.submit} />
+                <MyChatDetailInput onSubmit={this.submit} />
             </KeyboardAvoidingView>
         );
     }
@@ -112,7 +112,7 @@ class ChatDetail extends Component {
     };
 }
 
-export default ChatDetail;
+export default MyChatDetail;
 
 const styles = StyleSheet.create({
     container: {

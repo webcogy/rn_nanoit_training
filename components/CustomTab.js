@@ -1,30 +1,30 @@
 import React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 function CustomTab({ navigation }) {
-    const clickAaaa = () => {
-        navigation.reset({ routes: [{ name: 'Aaaa' }] })
+    const clickAllChat = () => {
+        navigation.reset({ routes: [{ name: 'AllChat' }] })
     }
-    const clickBbbb = () => {
-        navigation.reset({ routes: [{ name: 'Bbbb' }] })
+    const clickMyChat = () => {
+        navigation.reset({ routes: [{ name: 'MyChatIndex' }] })
     }
-    const clickCccc = () => {
-        navigation.reset({ routes: [{ name: 'Cccc' }] })
+    const clickMember = () => {
+        navigation.reset({ routes: [{ name: 'Member' }] })
     }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={clickAaaa} style={styles.buttonTab}>
+            <TouchableOpacity onPress={clickAllChat} style={styles.buttonTab}>
                 <Icon name='people-outline' size={23}></Icon>
                 <Text style={styles.buttonText}>전체 채팅</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={clickBbbb} style={styles.buttonTab}>
+            <TouchableOpacity onPress={clickMyChat} style={styles.buttonTab}>
                 <Icon name='chatbubbles-outline' size={23}></Icon>
                 <Text style={styles.buttonText}>나의 채팅</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={clickCccc} style={styles.buttonTab}>
+            <TouchableOpacity onPress={clickMember} style={styles.buttonTab}>
                 <Icon name='person-add-outline' size={23}></Icon>
                 <Text style={styles.buttonText}>전체 회원</Text>
             </TouchableOpacity>

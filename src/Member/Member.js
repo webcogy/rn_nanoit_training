@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
+import { Container, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 import CustomTab from '../../components/CustomTab';
 import ContentWrapper from '../../components/ContentWrapper';

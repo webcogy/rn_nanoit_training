@@ -21,7 +21,7 @@ export default function LogIn({ navigation }) {
             const userData = JSON.parse(lastMessage.data)
             console.log(`${userData.result.status_code}, ${userData.result.cause}`)
             if (userData.result.status_code == 200) {
-                navigation.reset({ routes: [{ name: "Aaaa" }] })
+                navigation.reset({ routes: [{ name: "AllChat" }] })
             }
         }
     }

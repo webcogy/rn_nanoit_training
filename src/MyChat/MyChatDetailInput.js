@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-class ChatDetailInput extends Component {
+class MyChatDetailInput extends Component {
     constructor(props) {
         super(props);
 
@@ -40,7 +40,7 @@ class ChatDetailInput extends Component {
     }
 }
 
-export default ChatDetailInput;
+export default MyChatDetailInput;
 
 const styles = StyleSheet.create({
     container: {},

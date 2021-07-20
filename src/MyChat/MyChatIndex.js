@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
-import Chat from './Chat';
-import ChatDetail from './ChatDetail';
+import MyChat from './MyChat';
+import MyChatDetail from './MyChatDetail';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -8,10 +8,10 @@ const Stack = createStackNavigator();
 
 export default function ChatIndex() {
     return (
-        <Stack.Navigator initialRouteName="Chat"
+        <Stack.Navigator initialRouteName="MyChat"
             screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Chat" component={Chat}></Stack.Screen>
-            <Stack.Screen name="ChatDetail" component={ChatDetail}></Stack.Screen>
+            <Stack.Screen name="MyChat" component={MyChat}></Stack.Screen>
+            <Stack.Screen name="MyChatDetail" component={MyChatDetail}></Stack.Screen>
         </Stack.Navigator>
     );
 }

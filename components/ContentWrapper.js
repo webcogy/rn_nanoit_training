@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
+import { Container } from 'native-base';
 import { StyleSheet } from 'react-native';
-import CustomTab from '../components/CustomTab';
+import CustomTab from './CustomTab';
 
 export default function ContentWrapper({ children }) {
     return (
