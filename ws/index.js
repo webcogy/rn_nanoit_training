@@ -25,7 +25,7 @@ export const SocketTest = () => {
         } else {
             actions.generalActions.WebSocketReceiveData(lastMessage.data)
         }
-    }, [lastMessage])
+    }, [])
     
     useEffect(() => {
         if (connectionStatus === 'Open') {
