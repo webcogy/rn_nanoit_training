@@ -1,46 +1,57 @@
 import React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
-function CustomTab({navigation}){
-
+function CustomTab({ navigation }) {
     const clickAaaa = () => {
-        navigation.reset({routes:[{name:'Aaaa'}]})
+        navigation.reset({ routes: [{ name: 'Aaaa' }] })
     }
-
     const clickBbbb = () => {
-        navigation.reset({routes:[{name:'Bbbb'}]})
+        navigation.reset({ routes: [{ name: 'Bbbb' }] })
+    }
+    const clickCccc = () => {
+        navigation.reset({ routes: [{ name: 'Cccc' }] })
     }
 
-    const clickCccc = () => {
-        navigation.reset({routes:[{name:'Cccc'}]})
-    }
-    
-    return(
+    return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={clickAaaa} style={styles.buttonTab} ><Text>aaa</Text></TouchableOpacity>
-            <TouchableOpacity onPress={clickBbbb} style={styles.buttonTab} ><Text>bbb</Text></TouchableOpacity>
-            <TouchableOpacity onPress={clickCccc} style={styles.buttonTab} ><Text>ccc</Text></TouchableOpacity>
+            <TouchableOpacity onPress={clickAaaa} style={styles.buttonTab}>
+                <Icon name='people-outline' size={23}></Icon>
+                <Text style={styles.buttonText}>전체 채팅</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={clickBbbb} style={styles.buttonTab}>
+                <Icon name='chatbubbles-outline' size={23}></Icon>
+                <Text style={styles.buttonText}>나의 채팅</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={clickCccc} style={styles.buttonTab}>
+                <Icon name='person-add-outline' size={23}></Icon>
+                <Text style={styles.buttonText}>전체 회원</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
-export default  CustomTab;
+export default CustomTab;
 
 
 const styles = StyleSheet.create({
     container: {
-      flex:0.1,
-      borderTopColor:'#ddd',
-      borderTopWidth:1,
-      justifyContent:'center',
-      alignItems:'center',
-      flexDirection:'row'
+        flex: 0.1,
+        borderTopColor: '#ddd',
+        borderTopWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
     },
-    buttonTab:{
-        width:'33%',
-        justifyContent:'center',
-        alignItems:'center',
-        flexDirection:'row'
+    buttonText: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    buttonTab: {
+        width: '33%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });

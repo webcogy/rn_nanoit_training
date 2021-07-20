@@ -21,7 +21,7 @@ export default function LogIn({ navigation }) {
             const userData = JSON.parse(lastMessage.data)
             console.log(`${userData.result.status_code}, ${userData.result.cause}`)
             if (userData.result.status_code == 200) {
-                navigation.navigate("FriendIndex");
+                navigation.reset({ routes: [{ name: "Aaaa" }] })
             }
         }
     }
@@ -67,7 +67,7 @@ export default function LogIn({ navigation }) {
                     <Right>
                         <Button style={styles.tinyButton, styles.container}
                             onPress={() => {
-                                navigation.reset({routes:[{name:"Aaaa"}]})
+                                navigation.navigate("Signup")
                             }}>
                             <Text>회원가입</Text>
                         </Button>

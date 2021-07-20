@@ -1,9 +1,8 @@
 import React, { useReducer } from 'react';
 import LogInIndex from './src/LogIn/LogInIndex';
-import FriendIndex from './src/Friend/FriendIndex';
-import Aaaa from './imsi/Aaaa';
-import Bbbb from './imsi/Bbbb';
-import Cccc from './imsi/Cccc';
+import AllChat from './src/AllChat/AllChat';
+import MyChat from './src/MyChat/MyChatIndex';
+import Member from './src/Member/Member';
 
 import { SocketTest } from './ws';
 import { StoreProvider } from './context/storeContext';
@@ -28,10 +27,9 @@ export default function App() {
                     <Stack.Navigator initialRouteName="LogInIndex"
                         screenOptions={{ headerShown: false }}>
                         <Stack.Screen name="LogInIndex" component={LogInIndex}></Stack.Screen>
-                        {/* <Stack.Screen name="FriendIndex" component={FriendIndex}></Stack.Screen> */}
-                        <Stack.Screen name="Aaaa" component={Aaaa}></Stack.Screen>
-                        <Stack.Screen name="Bbbb" component={Bbbb}></Stack.Screen>
-                        <Stack.Screen name="Cccc" component={Cccc}></Stack.Screen>
+                        <Stack.Screen name="AllChat" component={AllChat}></Stack.Screen>
+                        <Stack.Screen name="MyChat" component={MyChat}></Stack.Screen>
+                        <Stack.Screen name="Member" component={Member}></Stack.Screen>
                     </Stack.Navigator>
                 </NavigationContainer>
             </StoreProvider>

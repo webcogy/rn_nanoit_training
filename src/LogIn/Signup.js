@@ -22,24 +22,10 @@ export default function Signup({ navigation }) {
             const userData = JSON.parse(lastMessage.data)
             console.log(userData.result.status_code)
             if (userData.result.status_code == 200) {
-                successSignup
-                // navigation.pop()
+                navigation.pop()
             }
         }
     }
-
-    const successSignup = () =>
-        Alert.alert(
-            "회원가입",
-            "회원가입이 완료되었습니다.",
-            [
-                {
-                    text: "OK",
-                    onPress: () => console.log("OK Pressed")
-                }
-            ]
-        );
-
 
     return (
         <Container>
