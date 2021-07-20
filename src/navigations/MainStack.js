@@ -8,6 +8,8 @@ import { StyleSheet, Text } from "react-native";
 import styled from 'styled-components/native';
 const Stack = createStackNavigator();
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { Aaaa, Bbbb, Cccc } from '../imsi';
+
 
 function getHeaderTitle(route) {
   // If the focused route is not found, we need to assume it's the initial screen
@@ -44,6 +46,7 @@ const StackNavigation = () => {
       /> 
       <Stack.Screen name="ChannelCreation" component={ChannelCreation} />
       <Stack.Screen name="ChannelList" component={ChannelList} />
+      <Stack.Screen name="Aaaa" component={Aaaa} />
     </Stack.Navigator>
 
   )

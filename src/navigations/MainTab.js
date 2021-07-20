@@ -98,12 +98,7 @@ const MainTab = ({ navigation, route }) => {
                     }} />
             </Tab.Navigator>
 
-            <ActionButton buttonColor="rgba(63,81,181,1)" offsetY={100}>
-                <ActionButton.Item buttonColor='#9E72C3' title="New chat" onPress={() => this.DialogScreen}>
-                    <Icon name="chatbubbles" style={styles.actionButtonIcon} />
-                </ActionButton.Item>
 
-            </ActionButton>
         </>
     );
 };
