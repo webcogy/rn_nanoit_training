@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
-import { StoreContext } from '../context/storeContext';
 import useWebSocket, { ReadyState } from 'react-native-use-websocket';
+import { StoreContext } from '../context/storeContext';
 
 export const SocketTest = () => {
-    const { actions } = React.useContext(StoreContext)
+    const { state, actions } = React.useContext(StoreContext)
 
-    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('ws://172.30.1.23:8081/api/v1/ws', {
+    const { sendMessage, lastMessage, readyState, getWebSocket } = useWebSocket('ws://172.30.1.51:8081/api/v1/ws', {
         shouldReconnect: (closeEvent) => true,
         reconnectAttempts: 10,
         reconnectInterval: 5000,
@@ -26,10 +26,14 @@ export const SocketTest = () => {
             actions.generalActions.WebSocketReceiveData(lastMessage.data)
         }
     }, [])
-    
+
     useEffect(() => {
         if (connectionStatus === 'Open') {
             console.log('opened');
+            //actions.msgActions.WebsocketUpdateWriter(sendMessage)
+            // actions.counterActions.changeCounterText(true)
+            console.log(state.counterStates.isCounter)
+            // actions.msgActions.WebsocketCreateChatRoom('방 정보')
         } else if (connectionStatus === 'Connecting') {
             console.log('connecting...');
         } else if (connectionStatus === 'Closing') {

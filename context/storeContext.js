@@ -1,4 +1,6 @@
-import { initialState, reducer, useActions } from "../context/contextAPI";
+import { initialState } from './contextAPI/states';
+import { reducer } from './contextAPI/reducers';
+import { useActions } from './contextAPI/actions';
 import React, { createContext, useEffect, useReducer } from "react";
 
 const StoreContext = createContext(initialState);

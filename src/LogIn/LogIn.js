@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { SocketTest } from '../../ws';
 import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from './auth';
 
 import { StoreContext } from '../../context/storeContext';
@@ -13,23 +12,9 @@ export default function LogIn({ navigation }) {
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
-    const { sendMessage, lastMessage } = SocketTest();
-
     const clickLogin = () => {
-        sendMessage(
-            JSON.stringify(AuthLoginId(email, pwd))
-        )
-        if (!lastMessage || !lastMessage.data) {
-            return
-        } else {
-            const userData = JSON.parse(lastMessage.data)
-            console.log(`${userData.result.status_code}, ${userData.result.cause}`)
-            if (userData.result.status_code == 200) {
-                // navigation.reset({ routes: [{ name: "FriendIndex" }] })
-                // navigation.navigate("FriendIndex")
-                
-            }
-        }
+        actions.generalActions.WebsocketSendData(AuthLoginId(email, pwd))
+        console.log(state.generalActions.WebsocketSendData())
     }
 
     const clickLogout = () => {
