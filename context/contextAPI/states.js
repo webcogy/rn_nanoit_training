@@ -1,21 +1,23 @@
-export const counterStates = {
+const counterStates = {
     counter: 0,
     isCounter: false,
     isLogin: false,
 }
 
-export const msgStates = {
+const msgStates = {
+    // email: '',
+    // pwd: '',
     FRIENDS_ALL: [],
     TOPICS_ALL: [],
     TOPICS_MY: [],
 }
 
-export const listStates = {
+const listStates = {
     text: '',
     list: [],
 }
 
-export const initialState = {
+export const initialStates = {
     counterStates,
     msgStates,
     listStates,

@@ -16,6 +16,7 @@ export default function Signup({ navigation }) {
     const [pwd, setPwd] = useState("")
 
     const clickSignup = () => {
+        console.log('sign up')
         // sendMessage(
         //     JSON.stringify(AuthSignup(name, email, pwd))
         // )

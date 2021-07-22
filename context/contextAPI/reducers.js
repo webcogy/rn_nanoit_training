@@ -1,7 +1,7 @@
 import { DECREASE, INCREASE, IS_COUNTING, IS_LOGIN } from "./types";
-import { counterStates, msgStates, initialState } from "./states";
+import { initialStates } from "./states";
 
-export const counterReducer = (state, action) => {
+const counterReducer = (state, action) => {
     switch (action.type) {
         case INCREASE:
             return {
@@ -28,7 +28,7 @@ export const counterReducer = (state, action) => {
     }
 }
 
-export const msgReducer = (state, action) => {
+const msgReducer = (state, action) => {
     switch (action.type) {
         case INCREASE:
             return {
@@ -40,16 +40,19 @@ export const msgReducer = (state, action) => {
     }
 }
 
-export const listReducer = (state, action) => {
+const listReducer = (state, action) => {
     switch (action.type) {
         default:
             return state;
     }
 }
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialStates, action) => {
     return {
         counterStates: counterReducer(state.counterStates, action),
         msgStates: msgReducer(state.msgStates, action),
+        listStates: listReducer(state.listStates, action),
     }
 };
+
+export { initialStates, reducer }

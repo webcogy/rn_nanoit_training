@@ -1,32 +1,31 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from './auth';
 
 import { StoreContext } from '../../context/storeContext';
+import { SocketTest } from '../../ws';
 
 export default function LogIn({ navigation }) {
+
+    const { sendMessage } = SocketTest();
+
     const { state, actions } = useContext(StoreContext);
 
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
     const clickLogin = () => {
-        actions.generalActions.WebsocketSendData(AuthLoginId(email, pwd))
-        console.log(state.generalActions.WebsocketSendData())
+        // actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
+        /* sendMessage( 
+            JSON.stringify(
+                AuthLoginId('qqqq@naver.com', 'qqqqqqqq!@')
+            ) 
+        ) */
     }
 
     const clickLogout = () => {
-        sendMessage(
-            JSON.stringify(AuthLogout())
-        )
-        if (!lastMessage || !lastMessage.data) {
-            console.log("...")
-        } else {
-            const userData = JSON.parse(lastMessage.data)
-            console.log(`${userData.result.status_code}, ${userData.result.cause}`)
-        }
     }
 
     return (

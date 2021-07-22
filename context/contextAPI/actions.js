@@ -1,9 +1,20 @@
 import { DECREASE, INCREASE, IS_COUNTING, IS_LOGIN, TYPE_LOGGING_RAW } from "./types";
+import { Logger, SendMessageTrace } from '../dispatchs';
 
 let writer;
 
 const UpdateWriter = (sendMessage) => {
     writer = sendMessage
+}
+
+function Writer(props, json) {
+    //  Logger(props, TYPE_LOGGING_RAW, "[SEND] " + JSON.stringify(json))
+    // SendMessageTrace(props, json)
+    if (writer !== undefined) {
+        writer(JSON.stringify(json))
+    } else {
+        alert("[SEND-FAIL] WEBSOCKET WRITER IS NOT SET")
+    }
 }
 
 const WriterChatMessage = (json) => {
@@ -35,6 +46,9 @@ const msgActions = (props) => {
     return {
         WebsocketUpdateWriter: (sendMessage) => {
             UpdateWriter(sendMessage);
+        },
+        WebsocketSendData: (json) => {
+            Writer(props, json)
         },
         WebsocketReceiveData: (json) => {
             receiveData(json, props);
@@ -97,21 +111,3 @@ export const useActions = (state, dispatch) => {
         msgActions: msgActions({ state, dispatch }),
     }
 };
-
-export function Writer(props, json) {
-    Logger(props, TYPE_LOGGING_RAW, "[SEND] " + JSON.stringify(json))
-    SendMessageTrace(props, json)
-    if (writer !== undefined) {
-        writer(JSON.stringify(json))
-    } else {
-        alert("[SEND-FAIL] WEBSOCKET WRITER IS NOT SET")
-    }
-}
-
-export const generalActions = (props) => {
-    return {
-        WebsocketSendData: (json) => {
-            Writer(props, json)
-        }
-    }
-}
