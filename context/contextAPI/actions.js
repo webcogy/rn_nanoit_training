@@ -1,5 +1,4 @@
 import { DECREASE, INCREASE, IS_COUNTING, IS_LOGIN, TYPE_LOGGING_RAW } from "./types";
-import { Logger, SendMessageTrace } from '../dispatchs';
 
 let writer;
 
@@ -7,9 +6,7 @@ const UpdateWriter = (sendMessage) => {
     writer = sendMessage
 }
 
-function Writer(props, json) {
-    //  Logger(props, TYPE_LOGGING_RAW, "[SEND] " + JSON.stringify(json))
-    // SendMessageTrace(props, json)
+const Writer = (props, json) => {
     if (writer !== undefined) {
         writer(JSON.stringify(json))
     } else {
@@ -58,7 +55,7 @@ const msgActions = (props) => {
         },
         WebsocketCreateChatRoom: (json) => {
             CreateChatRoom(json);
-        }
+        },
     }
 }
 

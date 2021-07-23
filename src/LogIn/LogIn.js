@@ -5,34 +5,20 @@ import { StyleSheet } from 'react-native';
 import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from './auth';
 
 import { StoreContext } from '../../context/storeContext';
-import { SocketTest } from '../../ws';
 
 export default function LogIn({ navigation }) {
-
-    const { sendMessage, lastMessage } = SocketTest();
-
     const { state, actions } = useContext(StoreContext);
 
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
     const clickLogin = () => {
-        sendMessage(
-            JSON.stringify(
-                AuthLoginId(email, pwd)
-            )
-        )
-        // actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
-        console.log(lastMessage.data)
+        actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
     }
 
     const clickLogout = () => {
-        sendMessage(
-            JSON.stringify(
-                AuthLogout()
-            )
-        )
-        console.log(lastMessage.data)
+        actions.msgActions.WebsocketSendData(AuthLogout())
+        console.log('log out')
     }
 
     return (

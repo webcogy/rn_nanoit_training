@@ -5,8 +5,6 @@ const counterStates = {
 }
 
 const msgStates = {
-    // email: '',
-    // pwd: '',
     FRIENDS_ALL: [],
     TOPICS_ALL: [],
     TOPICS_MY: [],
