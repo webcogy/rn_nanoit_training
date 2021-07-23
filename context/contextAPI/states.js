@@ -1,7 +1,10 @@
 const counterStates = {
-    counter: 0,
-    isCounter: false,
     isLogin: false,
+    isSignup: false,
+    createRoom: false,
+    joinRoom: false,
+    leaveRoom: false,
+    inviteRoom: false,
 }
 
 const msgStates = {

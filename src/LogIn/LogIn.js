@@ -13,12 +13,20 @@ export default function LogIn({ navigation }) {
     const [pwd, setPwd] = useState("")
 
     const clickLogin = () => {
-        actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
+        if (email == "", pwd == "") {
+            actions.msgActions.WebsocketSendData(AuthLoginAnonymous())
+        }
+        else {
+            actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
+            if (state.counterStates.isLogin === true) {
+                navigation.navigate("TabScreenIndex")
+            }
+            console.log(state.counterStates.isLogin)
+        }
     }
 
     const clickLogout = () => {
         actions.msgActions.WebsocketSendData(AuthLogout())
-        console.log('log out')
     }
 
     return (

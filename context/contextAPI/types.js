@@ -1,10 +1,7 @@
-export const INCREASE = 'INCREASE';
-export const DECREASE = 'DECREASE';
-export const IS_COUNTING = 'IS_COUNTING';
-
 export const IS_LOGIN = 'IS_LOGIN';
-export const TYPE_LOGGING_RAW = 'TYPE_LOGGING_RAW';
-export const TYPE_ADD_SEND_MESSAGE_IN_TRACE = "TYPE_ADD_SEND_MESSAGE_IN_TRACE";
-export const TYPE_UPDATE_SEND_MESSAGE_IN_TRACE = "TYPE_UPDATE_SEND_MESSAGE_IN_TRACE";
-export const TRACE_RESULT_SEND = "send";
-export const TRACE_STATUS_SEND = "send";
+export const IS_SIGNUP = 'IS_SIGNUP';
+
+export const CREATE_ROOM = 'CREATE_ROOM';
+export const JOIN_ROOM = 'JOIN_ROOM';
+export const LEAVE_ROOM = 'LEAVE_ROOM';
+export const INVITE_ROOM = 'INVITE_ROOM';

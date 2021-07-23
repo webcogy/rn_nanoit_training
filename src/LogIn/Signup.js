@@ -4,31 +4,20 @@ import { StyleSheet } from 'react-native';
 
 import { AuthSignup } from './auth';
 import { StoreContext } from '../../context/storeContext';
-import { SocketTest } from '../../ws';
 
 export default function Signup({ navigation }) {
     const { state, actions } = useContext(StoreContext);
-
-    // const {sendMessage,lastMessage}=SocketTest();
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [pwd, setPwd] = useState("")
 
     const clickSignup = () => {
-        console.log('sign up')
-        // sendMessage(
-        //     JSON.stringify(AuthSignup(name, email, pwd))
-        // )
-        // if (!lastMessage || !lastMessage.data) {
-        //     console.log("not sign up")
-        // } else {
-        //     const userData = JSON.parse(lastMessage.data)
-        //     console.log(userData.result.status_code)
-        //     if (userData.result.status_code == 200) {
-        //         navigation.pop()
-        //     }
-        // }
+        actions.msgActions.WebsocketSendData(AuthSignup(name, email, pwd))
+        if (state.counterStates.isSignup === true) {
+            navigation.pop()
+        }
+        console.log(state.counterStates.isSignup)
     }
 
     return (

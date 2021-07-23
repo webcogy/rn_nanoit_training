@@ -1,27 +1,24 @@
-import { DECREASE, INCREASE, IS_COUNTING, IS_LOGIN } from "./types";
+import {
+    IS_LOGIN,
+    IS_SIGNUP,
+    CREATE_ROOM,
+    JOIN_ROOM,
+    LEAVE_ROOM,
+    INVITE_ROOM
+} from "./types";
 import { initialStates } from "./states";
 
 const counterReducer = (state, action) => {
     switch (action.type) {
-        case INCREASE:
-            return {
-                ...state,
-                counter: state.counter + 1
-            };
-        case DECREASE:
-            return {
-                ...state,
-                counter: state.counter - 1
-            };
-        case IS_COUNTING:
-            return {
-                ...state,
-                isCounter: state.isCount
-            };
         case IS_LOGIN:
             return {
                 ...state,
                 isLogin: action.isLogin
+            };
+        case IS_SIGNUP:
+            return {
+                ...state,
+                isSignup: action.isSignup
             };
         default:
             return state;
@@ -30,11 +27,6 @@ const counterReducer = (state, action) => {
 
 const msgReducer = (state, action) => {
     switch (action.type) {
-        case INCREASE:
-            return {
-                ...state,
-                counter: state.counter + 1
-            };
         default:
             return state;
     }

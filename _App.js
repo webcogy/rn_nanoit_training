@@ -1,9 +1,8 @@
 import React, { useReducer } from 'react';
 import LogInIndex from './src/LogIn/LogInIndex';
-import FriendIndex from './src/FriendIndex';
+import TabScreenIndex from './src/TabScreen/TabScreenIndex';
 
 import { SocketTest } from './ws';
-import { StoreProvider } from './context/storeContext';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -27,7 +26,7 @@ export default function _App() {
                         headerShown: false
                     }}>
                     <Stack.Screen name="LogInIndex" component={LogInIndex}></Stack.Screen>
-                    <Stack.Screen name="FriendIndex" component={FriendIndex}></Stack.Screen>
+                    <Stack.Screen name="TabScreenIndex" component={TabScreenIndex}></Stack.Screen>
                 </Stack.Navigator>
             </NavigationContainer>
         </WebsocketContext.Provider>

@@ -24,7 +24,6 @@ export const SocketTest = () => {
             return
         } else {
             actions.msgActions.WebsocketReceiveData(lastMessage.data)
-            // console.log(lastMessage.data)
         }
     }, [lastMessage])
 

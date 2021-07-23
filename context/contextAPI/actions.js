@@ -1,4 +1,29 @@
-import { DECREASE, INCREASE, IS_COUNTING, IS_LOGIN, TYPE_LOGGING_RAW } from "./types";
+import { IS_LOGIN, IS_SIGNUP } from "./types";
+
+const doLogin = (props, trueFalse) => {
+    props.dispatch({
+        type: IS_LOGIN,
+        isLogin: trueFalse
+    })
+};
+
+const doSignup = (props, trueFalse) => {
+    props.dispatch({
+        type: IS_SIGNUP,
+        isSignup: trueFalse
+    })
+};
+
+const counterActions = (props) => {
+    return {
+        changeDoLogin: (trueFalse) => {
+            doLogin(props, trueFalse);
+        },
+        changeDoSignup: (trueFalse) => {
+            doSignup(props, trueFalse);
+        },
+    }
+}
 
 let writer;
 
@@ -31,7 +56,15 @@ const receiveData = (json, props) => {
 
     try {
         root = JSON.parse(json)
-        console.log(root)
+        // console.log(root)
+        if (root.auth !== undefined) {
+            if (root.auth.request.how == 'login' && root.result.status_code == 200) {
+                doLogin(props, true)
+            }
+            if (root.auth.request.how == 'register' && root.result.status_code == 200) {
+                doSignup(props, true)
+            }
+        }
     } catch (e) {
         console.log(json)
         console.log(e)
@@ -55,49 +88,6 @@ const msgActions = (props) => {
         },
         WebsocketCreateChatRoom: (json) => {
             CreateChatRoom(json);
-        },
-    }
-}
-
-const increase = (props) => {
-    props.dispatch({
-        type: INCREASE,
-    })
-};
-
-const decrease = (props) => {
-    props.dispatch({
-        type: DECREASE,
-    })
-};
-
-const counterText = (props, trueFalse) => {
-    props.dispatch({
-        type: IS_COUNTING,
-        isCount: trueFalse
-    })
-};
-
-const doLogin = (props, trueFalse) => {
-    props.dispatch({
-        type: IS_LOGIN,
-        isLogin: trueFalse
-    })
-};
-
-const counterActions = (props) => {
-    return {
-        onIncrease: () => {
-            increase(props);
-        },
-        onDecrease: () => {
-            decrease(props);
-        },
-        changeCounterText: (trueFalse) => {
-            counterText(props, trueFalse);
-        },
-        changeDoLogin: (trueFalse) => {
-            doLogin(props, trueFalse);
         },
     }
 }

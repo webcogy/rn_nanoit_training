@@ -1,18 +1,13 @@
 import { initialStates } from './contextAPI/states';
 import { reducer } from './contextAPI/reducers';
 import { useActions } from './contextAPI/actions';
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 
 const StoreContext = createContext(initialStates);
 
 const StoreProvider = ({ children }) => {
-
-    // 모든 컴포넌트에서 쓸수 있도록 구독
     const [state, dispatch] = useReducer(reducer, initialStates);
     const actions = useActions(state, dispatch);
-
-    // state가 변할때마다 console.log로 확인
-    // useEffect(() => console.log(state.generalStates), [state.generalStates])
 
     return (
         <StoreContext.Provider value={{ state, dispatch, actions }}>
