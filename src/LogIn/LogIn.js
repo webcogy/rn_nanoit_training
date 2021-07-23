@@ -9,7 +9,7 @@ import { SocketTest } from '../../ws';
 
 export default function LogIn({ navigation }) {
 
-    const { sendMessage } = SocketTest();
+    const { sendMessage, lastMessage } = SocketTest();
 
     const { state, actions } = useContext(StoreContext);
 
@@ -17,15 +17,22 @@ export default function LogIn({ navigation }) {
     const [pwd, setPwd] = useState("")
 
     const clickLogin = () => {
-        // actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
-        /* sendMessage( 
+        sendMessage(
             JSON.stringify(
-                AuthLoginId('qqqq@naver.com', 'qqqqqqqq!@')
-            ) 
-        ) */
+                AuthLoginId(email, pwd)
+            )
+        )
+        // actions.msgActions.WebsocketSendData(AuthLoginId(email, pwd))
+        console.log(lastMessage.data)
     }
 
     const clickLogout = () => {
+        sendMessage(
+            JSON.stringify(
+                AuthLogout()
+            )
+        )
+        console.log(lastMessage.data)
     }
 
     return (

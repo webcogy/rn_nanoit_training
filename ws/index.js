@@ -20,17 +20,17 @@ export const SocketTest = () => {
     }[readyState];
 
     useEffect(() => {
-        console.log("🚀 ~ file: index.js ~ line 24 ~ useEffect ~ lastMessage", lastMessage)
         if (!lastMessage || !lastMessage.data) {
             return
         } else {
-            actions.msgActions.WebSocketReceiveData(lastMessage.data)
+            // actions.msgActions.WebSocketReceiveData(lastMessage.data)
+            console.log(lastMessage.data)
         }
     }, [])
 
     useEffect(() => {
         if (connectionStatus === 'Open') {
-            actions.msgActions.WebsocketUpdateWriter(sendMessage)
+            // actions.msgActions.WebsocketUpdateWriter(sendMessage)
             console.log('opened');
         } else {
             console.log('is open ?');

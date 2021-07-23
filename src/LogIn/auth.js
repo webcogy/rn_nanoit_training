@@ -14,9 +14,11 @@ export const AuthSignup = (name, email, password) => {
                 what: "user",
                 how: "register",
                 user: {
-                    name: name,
-                    email: email,
-                    password: password
+                    auth: {
+                        name: name,
+                        email: email,
+                        password: password
+                    }
                 }
             }
         }
@@ -33,8 +35,10 @@ export const AuthLoginId = (email, password) => {
                 how: "login",
                 using: "id",
                 user: {
-                    email: email,
-                    password: password
+                    auth: {
+                        email: email,
+                        password: password
+                    }
                 }
             }
         }
