@@ -20,6 +20,26 @@ const counterReducer = (state, action) => {
                 ...state,
                 isSignup: action.isSignup
             };
+        case CREATE_ROOM:
+            return {
+                ...state,
+                createRoom: action.createRoom
+            };
+        case JOIN_ROOM:
+            return {
+                ...state,
+                joinRoom: action.joinRoom
+            };
+        case LEAVE_ROOM:
+            return {
+                ...state,
+                leaveRoom: action.leaveRoom
+            };
+        case INVITE_ROOM:
+            return {
+                ...state,
+                inviteRoom: action.inviteRoom
+            };
         default:
             return state;
     }

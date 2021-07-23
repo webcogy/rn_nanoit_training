@@ -1,14 +1,41 @@
-import React, { useState } from 'react';
-import { Button, Container, Text } from 'native-base';
+import React, { useContext, useState } from 'react';
+import { Button, Card, CardItem, Container, Content, Input, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
+import { CtrlCreateRoom } from '../ctrl';
+
+import { StoreContext } from '../../../context/storeContext';
+
 export default function MyChat({ navigation }) {
+    const { state, actions } = useContext(StoreContext);
+
+    const [roomName, setRoomName] = useState("")
+
+    const clickCreateRoom = () => {
+        if (roomName == "") {
+        } else {
+            actions.msgActions.WebsocketCreateChatRoom(CtrlCreateRoom(roomName))
+            console.log(state.counterStates.createRoom)
+        }
+    }
+
     return (
         <Container style={styles.container}>
-            <Text>나의 채팅</Text>
-            <Button>
-                <Text>방 만들기</Text>
-            </Button>
+            <Content>
+                <Text>나의 채팅</Text>
+            </Content>
+            <Card>
+                <CardItem>
+                    <Left>
+                        <Input placeholder="방 이름 입력" onChangeText={text => setRoomName(text)} value={roomName}></Input>
+                    </Left>
+                    <Right>
+                        <Button onPress={clickCreateRoom}>
+                            <Text>방 만들기</Text>
+                        </Button>
+                    </Right>
+                </CardItem>
+            </Card>
         </Container>
     );
 }

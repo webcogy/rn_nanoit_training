@@ -1,4 +1,11 @@
-import { IS_LOGIN, IS_SIGNUP } from "./types";
+import {
+    IS_LOGIN,
+    IS_SIGNUP,
+    CREATE_ROOM,
+    JOIN_ROOM,
+    LEAVE_ROOM,
+    INVITE_ROOM
+} from "./types";
 
 const doLogin = (props, trueFalse) => {
     props.dispatch({
@@ -14,6 +21,34 @@ const doSignup = (props, trueFalse) => {
     })
 };
 
+const doCreateRoom = (props, trueFalse) => {
+    props.dispatch({
+        type: CREATE_ROOM,
+        createRoom: trueFalse
+    })
+};
+
+const doJoinRoom = (props, trueFalse) => {
+    props.dispatch({
+        type: JOIN_ROOM,
+        joinRoom: trueFalse
+    })
+};
+
+const doLeaveRoom = (props, trueFalse) => {
+    props.dispatch({
+        type: LEAVE_ROOM,
+        leaveRoom: trueFalse
+    })
+};
+
+const doInviteRoom = (props, trueFalse) => {
+    props.dispatch({
+        type: INVITE_ROOM,
+        inviteRoom: trueFalse
+    })
+};
+
 const counterActions = (props) => {
     return {
         changeDoLogin: (trueFalse) => {
@@ -21,6 +56,18 @@ const counterActions = (props) => {
         },
         changeDoSignup: (trueFalse) => {
             doSignup(props, trueFalse);
+        },
+        changeDoCreateRoom: (trueFalse) => {
+            doCreateRoom(props, trueFalse);
+        },
+        changeDoJoinRoom: (trueFalse) => {
+            doJoinRoom(props, trueFalse);
+        },
+        changeDoLeaveRoom: (trueFalse) => {
+            doLeaveRoom(props, trueFalse);
+        },
+        changeDoInviteRoom: (trueFalse) => {
+            doInviteRoom(props, trueFalse);
         },
     }
 }
@@ -56,13 +103,18 @@ const receiveData = (json, props) => {
 
     try {
         root = JSON.parse(json)
-        // console.log(root)
+        console.log(root)
         if (root.auth !== undefined) {
             if (root.auth.request.how == 'login' && root.result.status_code == 200) {
                 doLogin(props, true)
             }
             if (root.auth.request.how == 'register' && root.result.status_code == 200) {
                 doSignup(props, true)
+            }
+        }
+        if (root.ctrl !== undefined) {
+            if (root.ctrl.request.how == 'create' && root.result.status_code == 200) {
+                doCreateRoom(props, true)
             }
         }
     } catch (e) {
