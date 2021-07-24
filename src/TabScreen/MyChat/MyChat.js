@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Button, Card, CardItem, Container, Content, Input, Left, Right, Text } from 'native-base';
+import { Button, Card, CardItem, Container, Content, Input, Item, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { CtrlCreateRoom } from '../ctrl';
+import { CtrlCreateRoom } from '../../../utils/ctrl';
 
 import { StoreContext } from '../../../context/storeContext';
 
@@ -20,9 +20,11 @@ export default function MyChat({ navigation }) {
     }
 
     return (
-        <Container style={styles.container}>
+        <Container>
             <Content>
-                <Text>나의 채팅</Text>
+                <Item style={styles.container}>
+                    <Text>나의 채팅</Text>
+                </Item>
             </Content>
             <Card>
                 <CardItem>

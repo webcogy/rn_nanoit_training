@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container, Text } from 'native-base';
+import { Container, Text, Item, Content } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 export default function AllChat() {
     return (
-        <Container style={styles.container}>
-            <Text>전체 채팅</Text>
+        <Container>
+            <Content>
+                <Item style={styles.container}>
+                    <Text>전체 채팅</Text>
+                </Item>
+            </Content>
         </Container>
     );
 }

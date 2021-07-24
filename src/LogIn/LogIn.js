@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Button, Card, CardItem, Container, Content, Footer, Form, Header, Input, Item, Left, Right, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from './auth';
+import { AuthLoginId, AuthLoginAnonymous, AuthLogout } from '../../utils/auth';
 
 import { StoreContext } from '../../context/storeContext';
 

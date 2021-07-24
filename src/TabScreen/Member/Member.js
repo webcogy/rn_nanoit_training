@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Container, Text } from 'native-base';
+import { Container, Text, Item, Content } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 export default function Member({ navigation }) {
     return (
-        <Container style={styles.container}>
-            <Text>전체 회원</Text>
+        <Container>
+            <Content>
+                <Item style={styles.container}>
+                    <Text>전체 회원</Text>
+                </Item>
+            </Content>
         </Container>
     );
 }

@@ -14,7 +14,10 @@ const msgStates = {
 }
 
 const listStates = {
-    text: '',
+    listName: {
+        id: 0,
+        text: '',
+    },
     list: [],
 }
 
