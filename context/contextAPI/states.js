@@ -1,10 +1,6 @@
 const counterStates = {
     isLogin: false,
     isSignup: false,
-    createRoom: false,
-    joinRoom: false,
-    leaveRoom: false,
-    inviteRoom: false,
 }
 
 const msgStates = {
@@ -13,10 +9,15 @@ const msgStates = {
     TOPICS_MY: [],
 }
 
-const listStates = {
-    listName: {
+const chatListStates = {
+    createRoom: false,
+    joinRoom: false,
+    leaveRoom: false,
+    inviteRoom: false,
+
+    chatName: {
         id: 0,
-        text: '',
+        name: '',
     },
     list: [],
 }
@@ -24,5 +25,5 @@ const listStates = {
 export const initialStates = {
     counterStates,
     msgStates,
-    listStates,
+    chatListStates,
 }

@@ -20,10 +20,29 @@ const counterReducer = (state, action) => {
                 ...state,
                 isSignup: action.isSignup
             };
+        default:
+            return state;
+    }
+}
+
+const msgReducer = (state, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
+}
+
+const chatListReducer = (state, action) => {
+    switch (action.type) {
         case CREATE_ROOM:
             return {
                 ...state,
-                createRoom: action.createRoom
+                createRoom: action.createRoom,
+                chatName: action.chatName,
+                list: [
+                    ...state.list,
+                    action.list
+                ]
             };
         case JOIN_ROOM:
             return {
@@ -45,25 +64,11 @@ const counterReducer = (state, action) => {
     }
 }
 
-const msgReducer = (state, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
-
-const listReducer = (state, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-}
-
 const reducer = (state = initialStates, action) => {
     return {
         counterStates: counterReducer(state.counterStates, action),
         msgStates: msgReducer(state.msgStates, action),
-        listStates: listReducer(state.listStates, action),
+        chatListStates: chatListReducer(state.chatListStates, action),
     }
 };
 

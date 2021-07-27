@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Content, Footer, Form, Header, Input, Item, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 
-import { AuthSignup } from './auth';
+import { AuthSignup } from '../../utils/auth';
 import { StoreContext } from '../../context/storeContext';
 
 export default function Signup({ navigation }) {

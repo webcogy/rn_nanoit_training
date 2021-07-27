@@ -27,6 +27,7 @@ export default function LogIn({ navigation }) {
 
     const clickLogout = () => {
         actions.msgActions.WebsocketSendData(AuthLogout())
+        console.log(state.counterStates.isLogin)
     }
 
     return (

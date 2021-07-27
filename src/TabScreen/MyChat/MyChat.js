@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Button, Card, CardItem, Container, Content, Input, Item, Left, Right, Text } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { Button, Card, CardItem, Container, Content, Input, Item, Left, List, Right, Text } from 'native-base';
+import { FlatList, StyleSheet, View } from 'react-native';
+
+// import { MyChatList } from './MyChatList';
 
 import { CtrlCreateRoom } from '../../../utils/ctrl';
 
@@ -15,8 +17,28 @@ export default function MyChat({ navigation }) {
         if (roomName == "") {
         } else {
             actions.msgActions.WebsocketCreateChatRoom(CtrlCreateRoom(roomName))
-            console.log(state.counterStates.createRoom)
+            console.log(state.chatListStates.createRoom)
+            console.log(state.chatListStates.chatName)
+            console.log(state.chatListStates.list)
         }
+    }
+
+    const RenderList = () => {
+        return (
+            <View>
+                {
+                    state.chatListStates.list.map((e, i) =>
+                        <View key={i}>
+                            <List>
+                                <Right>
+                                    <Text>{e.name}</Text>
+                                </Right>
+                            </List>
+                        </View>
+                    )
+                }
+            </View>
+        )
     }
 
     return (
@@ -25,6 +47,9 @@ export default function MyChat({ navigation }) {
                 <Item style={styles.container}>
                     <Text>나의 채팅</Text>
                 </Item>
+                <View>
+                    <RenderList />
+                </View>
             </Content>
             <Card>
                 <CardItem>

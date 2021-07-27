@@ -21,10 +21,15 @@ const doSignup = (props, trueFalse) => {
     })
 };
 
-const doCreateRoom = (props, trueFalse) => {
+const doCreateRoom = (props, trueFalse, id, name, list) => {
     props.dispatch({
         type: CREATE_ROOM,
-        createRoom: trueFalse
+        createRoom: trueFalse,
+        chatName: {
+            id: id,
+            name: name
+        },
+        list: list
     })
 };
 
@@ -57,8 +62,8 @@ const counterActions = (props) => {
         changeDoSignup: (trueFalse) => {
             doSignup(props, trueFalse);
         },
-        changeDoCreateRoom: (trueFalse) => {
-            doCreateRoom(props, trueFalse);
+        changeDoCreateRoom: (trueFalse, id, name, list) => {
+            doCreateRoom(props, trueFalse, id, name, list);
         },
         changeDoJoinRoom: (trueFalse) => {
             doJoinRoom(props, trueFalse);
@@ -82,7 +87,7 @@ const Writer = (props, json) => {
     if (writer !== undefined) {
         writer(JSON.stringify(json))
     } else {
-        alert("[SEND-FAIL] WEBSOCKET WRITER IS NOT SET")
+        console.log("[SEND-FAIL] WEBSOCKET WRITER IS NOT SET")
     }
 }
 
@@ -108,13 +113,16 @@ const receiveData = (json, props) => {
             if (root.auth.request.how == 'login' && root.result.status_code == 200) {
                 doLogin(props, true)
             }
+            if (root.auth.request.how == 'logout' && root.result.status_code == 200) {
+                doLogin(props, false)
+            }
             if (root.auth.request.how == 'register' && root.result.status_code == 200) {
                 doSignup(props, true)
             }
         }
-        if (root.ctrl !== undefined) {
-            if (root.ctrl.request.how == 'create' && root.result.status_code == 200) {
-                doCreateRoom(props, true)
+        if (root.msg !== undefined) {
+            if (root.result.status_code == 200) {
+                doCreateRoom(props, true, root.msg.request.topic.id, root.msg.request.topic.name, root.msg.request.topic)
             }
         }
     } catch (e) {
